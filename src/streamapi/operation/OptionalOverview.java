@@ -20,10 +20,8 @@ public class OptionalOverview {
 
         opt.ifPresent(OptionalOverview::print);
 
-        //filter() - reject (filter out) certain Optional values
         opt.filter(x -> x.contains("ab")).ifPresent(OptionalOverview::print);
 
-        //map() - transform value if present
         opt.map(String::trim).filter(t -> t.length() > 1).ifPresent(OptionalOverview::print);
     }
 }
