@@ -20,7 +20,7 @@ public class WorkingWithFunction {
     }
 
     public static void main(String[] args) {
-        List<Integer> list = map(Arrays.asList("Java", "C++", "Cobol", "PHP", "C#"), (String s) -> s.length());
+        List<Integer> list = map(Arrays.asList("Java", "C++", "Cobol", "PHP", "C#", "Go"), (String s) -> s.length());
 
         System.out.println(list);
     }
