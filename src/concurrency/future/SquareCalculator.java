@@ -6,9 +6,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class SquareCalculator {
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ExecutorService executor = Executors.newFixedThreadPool(2);
 
     private Future<Integer> square(Integer input) {
+        System.out.println("calculating square for: " + input);
         return executor.submit(() -> {
             Thread.sleep(1000);
             return input * input;
