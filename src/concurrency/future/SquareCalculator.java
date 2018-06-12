@@ -21,14 +21,24 @@ public class SquareCalculator {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         SquareCalculator calculator = new SquareCalculator();
-        Future<Integer> future = calculator.square(10);
 
-        while ( !future.isDone() ) {
-            System.out.println("Calculation...");
+        Future<Integer> future1 = calculator.square(10);
+        Future<Integer> future2 = calculator.square(100);
+
+        while ( !(future1.isDone() && future2.isDone()) ) {
+            System.out.println(
+                    String.format("future1 is %s and future2 is %s",
+                            future1.isDone() ? "Done" : "not done",
+                            future2.isDone() ? "Done" : "not done")
+            );
             Thread.sleep(300);
         }
 
-        System.out.println(future.get());
+        Integer result1 = future1.get();
+        Integer result2 = future2.get();
+
+        System.out.println(result1 + " and " + result2);
+
         calculator.getExecutor().shutdown();
     }
 }
